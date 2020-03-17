@@ -37,13 +37,15 @@
             this.huffmanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decompressImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compressImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.decompressScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tryRecoveryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tJS2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClipboardSeekSample = new System.Windows.Forms.ToolStripMenuItem();
             this.SeekUpdate = new System.Windows.Forms.Timer(this.components);
-            this.decompressScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,9 +55,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(14, 11);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(435, 277);
+            this.listBox1.Size = new System.Drawing.Size(507, 256);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -63,9 +66,9 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(12, 290);
+            this.textBox1.Location = new System.Drawing.Point(14, 268);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(435, 20);
+            this.textBox1.Size = new System.Drawing.Size(507, 21);
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -75,12 +78,14 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFileToolStripMenuItem,
             this.saveFileToolStripMenuItem,
+            this.extractTextToolStripMenuItem,
+            this.openTextToolStripMenuItem,
             this.huffmanToolStripMenuItem,
             this.tryRecoveryToolStripMenuItem,
             this.tJS2ToolStripMenuItem,
             this.ClipboardSeekSample});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(257, 202);
             // 
             // openFileToolStripMenuItem
             // 
@@ -109,16 +114,23 @@
             // decompressImageToolStripMenuItem
             // 
             this.decompressImageToolStripMenuItem.Name = "decompressImageToolStripMenuItem";
-            this.decompressImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.decompressImageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.decompressImageToolStripMenuItem.Text = "Decompress Image";
             this.decompressImageToolStripMenuItem.Click += new System.EventHandler(this.decompressImageToolStripMenuItem_Click);
             // 
             // compressImageToolStripMenuItem
             // 
             this.compressImageToolStripMenuItem.Name = "compressImageToolStripMenuItem";
-            this.compressImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.compressImageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.compressImageToolStripMenuItem.Text = "Compress Image";
             this.compressImageToolStripMenuItem.Click += new System.EventHandler(this.compressImageToolStripMenuItem_Click);
+            // 
+            // decompressScriptToolStripMenuItem
+            // 
+            this.decompressScriptToolStripMenuItem.Name = "decompressScriptToolStripMenuItem";
+            this.decompressScriptToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.decompressScriptToolStripMenuItem.Text = "Decompress Script";
+            this.decompressScriptToolStripMenuItem.Click += new System.EventHandler(this.decompressScriptToolStripMenuItem_Click);
             // 
             // tryRecoveryToolStripMenuItem
             // 
@@ -166,18 +178,25 @@
             this.SeekUpdate.Interval = 500;
             this.SeekUpdate.Tick += new System.EventHandler(this.SeekUpdate_Tick);
             // 
-            // decompressScriptToolStripMenuItem
+            // extractTextToolStripMenuItem
             // 
-            this.decompressScriptToolStripMenuItem.Name = "decompressScriptToolStripMenuItem";
-            this.decompressScriptToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.decompressScriptToolStripMenuItem.Text = "Decompress Script";
-            this.decompressScriptToolStripMenuItem.Click += new System.EventHandler(this.decompressScriptToolStripMenuItem_Click);
+            this.extractTextToolStripMenuItem.Name = "extractTextToolStripMenuItem";
+            this.extractTextToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.extractTextToolStripMenuItem.Text = "Extract to Text File";
+            this.extractTextToolStripMenuItem.Click += new System.EventHandler(this.extractTextToolStripMenuItem_Click);
+            // 
+            // openTextToolStripMenuItem
+            // 
+            this.openTextToolStripMenuItem.Name = "openTextToolStripMenuItem";
+            this.openTextToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.openTextToolStripMenuItem.Text = "Overwrite with Translated Text file";
+            this.openTextToolStripMenuItem.Click += new System.EventHandler(this.openTextToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 322);
+            this.ClientSize = new System.Drawing.Size(535, 297);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
@@ -206,6 +225,8 @@
         private System.Windows.Forms.ToolStripMenuItem ClipboardSeekSample;
         private System.Windows.Forms.Timer SeekUpdate;
         private System.Windows.Forms.ToolStripMenuItem decompressScriptToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractTextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openTextToolStripMenuItem;
     }
 }
 

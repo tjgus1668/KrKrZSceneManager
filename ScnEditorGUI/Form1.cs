@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using KrKrSceneManager;
 
@@ -6,11 +7,16 @@ namespace ScnEditorGUI {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
-            MessageBox.Show("This GUI don't is a stable translation tool, this program is a Demo for my dll, the \"KrKrSceneManager.dll\" it's a opensoruce project to allow you make your program to edit any scn file (with sig PSB or MDF) or TJS2 Files (with sig TJS2100)\n\nHow to use:\n*Rigth Click in the window to open or save the file\n*Select the string in listbox and edit in the text box\n*Press enter to update the string\n\nThis program is unstable!");
+            MessageBox.Show("This GUI don't is a stable translation tool, " +
+                "this program is a Demo for my dll, the \"KrKrSceneManager.dll\" " +
+                "it's a opensoruce project to allow you make your program to edit any scn file (with sig PSB or MDF) " +
+                "or TJS2 Files (with sig TJS2100)\n\nHow to use:\n" +
+                "*Rigth Click in the window to open or save the file" +
+                "\n*Select the string in listbox and edit in the text box" +
+                "\n*Press enter to update the string\n\nThis program is unstable!");
         }
-
+        OpenFileDialog fd = new OpenFileDialog();
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e) {
-            OpenFileDialog fd = new OpenFileDialog();
             fd.FileName = "";
             fd.Filter = "KiriKiri Compiled Files | *.scn; *.psb|Pack of Resources | *.pimg";
             DialogResult dr = fd.ShowDialog();
@@ -89,6 +95,48 @@ namespace ScnEditorGUI {
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == '\r' || e.KeyChar == '\n') {
                 listBox1.Items[listBox1.SelectedIndex] = textBox1.Text;
+            }
+        }
+
+        /// <summary>
+        /// Extract to an easy-to-edit text file in a text editor.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void extractTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var lines = listBox1.Items;
+            string[] arr = new string[listBox1.Items.Count];
+            for(int i = 0; i<listBox1.Items.Count; i++)
+            {
+                arr[i] = listBox1.Items[i].ToString();
+            }
+
+            var saveFile = new SaveFileDialog();
+            saveFile.DefaultExt = "txt";
+            saveFile.Filter = "Text File | *.txt";
+            var dr = saveFile.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                File.WriteAllLines(saveFile.FileName, arr);
+            }
+        }
+        private void openTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string str = string.Empty;
+            string[] arr = new string[listBox1.Items.Count];
+            var openFile = new OpenFileDialog();
+            openFile.DefaultExt = "txt";
+            openFile.Filter = "Text File | *.txt";
+            var dr = openFile.ShowDialog();
+            if(dr == DialogResult.OK)
+            {
+                str = File.ReadAllText(openFile.FileName, System.Text.Encoding.UTF8);
+                arr = str.Split('\n');
+                for(int i = 0; i<listBox1.Items.Count; i++)
+                {
+                    listBox1.Items[i] = arr[i];
+                }
             }
         }
 
@@ -295,5 +343,7 @@ namespace ScnEditorGUI {
             System.IO.File.WriteAllBytes(fd.FileName, PSBStrMan.ExtractMDF(Content));
             MessageBox.Show("Finished");
         }
+
+
     }
 }
