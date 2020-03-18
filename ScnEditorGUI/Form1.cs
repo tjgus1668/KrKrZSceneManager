@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using KrKrSceneManager;
 
@@ -132,7 +133,7 @@ namespace ScnEditorGUI {
             if(dr == DialogResult.OK)
             {
                 str = File.ReadAllText(openFile.FileName, System.Text.Encoding.UTF8);
-                arr = str.Split('\n');
+                arr = Regex.Split(str, "\r\n");
                 for(int i = 0; i<listBox1.Items.Count; i++)
                 {
                     listBox1.Items[i] = arr[i];
