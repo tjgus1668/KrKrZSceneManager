@@ -3,7 +3,7 @@
 
 2.You can import the text file that have been translated and save them as .SCN files.
 
-![aaa](https://user-images.githubusercontent.com/18442452/76891722-cf5fca80-68cc-11ea-8542-053c34934bf0.PNG)
+How to use (https://www.youtube.com/watch?v=Jk_xPei6Z0Q&feature=youtu.be)
 
 ### KiriKiriZSM ~5.6 (Final?)
 [![Build Status](https://travis-ci.org/ForumHulp/pageaddon.svg?branch=master)](http://vnx.uvnworks.com)
