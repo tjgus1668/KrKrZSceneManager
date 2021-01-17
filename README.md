@@ -1,9 +1,11 @@
-#### What I Added
+~~#### What I Added
 1.You can extract trimmed text into a text file.
 
-2.You can import the text file that have been translated and save them as .SCN files.
+~~2.You can import the text file that have been translated and save them as .SCN files.
 
-How to use (https://www.youtube.com/watch?v=Jk_xPei6Z0Q&feature=youtu.be)
+~~How to use (https://www.youtube.com/watch?v=Jk_xPei6Z0Q&feature=youtu.be)
+
+use this https://github.com/tjgus1668/scnextract
 
 ### KiriKiriZSM ~5.6 (Final?)
 [![Build Status](https://travis-ci.org/ForumHulp/pageaddon.svg?branch=master)](http://vnx.uvnworks.com)
