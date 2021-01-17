@@ -1,5 +1,5 @@
 ~~#### What I Added~~
-1.You can extract trimmed text into a text file.~~
+~~1.You can extract trimmed text into a text file.~~
 
 ~~2.You can import the text file that have been translated and save them as .SCN files.~~
 
